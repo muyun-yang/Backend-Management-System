@@ -1,0 +1,178 @@
+
+    /* ================================== */
+    /* 1. 全局样式和变量 */
+    /* ================================== */
+:root {
+    --menu-width: 180px;
+
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f7f9;
+    --text-primary: #2c3e50;
+    --text-secondary: #6c757d;
+    --accent-color: #3b82f6;
+    --accent-light: #dbeafe;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --primary-color: #007bff;
+    --text-color: #212529;
+    --background-color: #f8f9fa;
+    --nav-bg-color: #343a40;
+    --nav-text-color: #f8f9fa;
+    --nav-hover-color: #495057;
+    --header-bg-color: #fff;
+    --header-text-color: #2c3e50;
+}
+.dark-mode {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --text-primary: #f8f9fa;
+    --text-secondary: #a0aec0;
+    --accent-color: #63b3ed;
+    --accent-light: #2a4365;
+    --success-color: #48bb78;
+    --danger-color: #e53e3e;
+    --border-color: #4a5568;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    --text-color: #ecf0f1;
+    --background-color: #121212;
+    --nav-bg-color: #212529;
+    --nav-text-color: #ced4da;
+    --nav-hover-color: #343a40;
+    --header-bg-color: #1e1e1e;
+    --header-text-color: #ecf0f1;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 1500px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#app {
+    display: flex;
+    height: 100vh;
+}
+/* ================================== */
+/* 2. 左侧导航菜单样式 (Sidebar) */
+/* ================================== */
+.sidebar-nav {
+    width: 180px;
+
+    flex-shrink: 0;
+    background-color: var(--nav-bg-color);
+    color: var(--nav-text-color);
+    /*padding: 20px 0;*/
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh; /* 占据整个视口高度 */
+    z-index: 1000;
+}/* 确保它在最上层 */
+.sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.sidebar-header h3 {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 10px 0 0;
+}
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 15px;
+}
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    color: var(--nav-text-color);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+.nav-item:hover {
+    background-color: var(--nav-hover-color);
+}
+.nav-item.router-link-active {
+    background-color: var(--primary-color);
+    font-weight: bold;
+}
+.nav-icon {
+    margin-right: 15px;
+}
+/* ================================== */
+/* 3. 右侧主内容区 (Main Content) */
+/* ================================== */
+.main-content {
+    flex: 3; /* 占据所有剩余空间 */
+    display: flex;
+
+    flex-direction: column;
+    overflow-y: auto;
+    margin-left: 40px;
+
+    width: 1200px;
+
+}
+.app-header {
+    width:3200px ;
+    height: 80px;
+    background-color: var(--header-bg-color);
+    color: var(--header-text-color);
+    padding: 20px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-title {
+    display: flex;
+    flex-direction: column;
+}
+.app-title {
+    font-size: 1.8em;
+    margin: 0;
+}
+.app-subtitle {
+    font-size: 0.7em;
+    opacity: 0.8;
+}
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+.theme-toggle, .clear-button {
+    background: none;
+    border: 1px solid white;
+    color: var(--header-text-color);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.theme-toggle:hover, .clear-button:hover {
+    background-color: white;
+}
+/* 路由视图的容器，它将占据所有剩余空间并可滚动 */
+.router-view-container {
+    flex: 1;
+    overflow-y: auto;
+    /*padding: 20px;*/
+}

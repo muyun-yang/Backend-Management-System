@@ -1,0 +1,301 @@
+/* ================================== */
+/* 核心布局和间距 */
+/* ================================== */
+.knowledge-base-container {
+    display: flex;
+    flex-direction: column; /* 垂直堆叠，让标题在顶部 */
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--bg-primary);
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.knowledge-base-panel {
+    width: 100%;
+    max-width: 1200px; /* 增加最大宽度以适应双栏布局 */
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    display: flex; /* ⭐ 核心改动：使用 Flexbox 实现左右布局 */
+    gap: 2rem;
+}
+
+/* ================================== */
+/* 左侧：文件列表 */
+/* ================================== */
+.file-list-container {
+    flex: 3;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-y: auto; /* 当内容过多时，允许滚动 */
+    max-height: 600px; /* 限制最大高度 */
+}
+
+.file-list-container h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 1.5rem 0;
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.file-item:last-child {
+    border-bottom: none;
+}
+
+.file-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.file-name a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.file-name a:hover {
+    color: var(--accent-light);
+    text-decoration: underline;
+}
+
+.delete-button {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: transparent;
+    border: 1px solid var(--danger-color);
+    color: var(--danger-color);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.delete-button:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.empty-hint {
+    text-align: center;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* ================================== */
+/* 右侧：所有上传功能 */
+/* ================================== */
+.upload-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.upload-area, .text-upload-area {
+    background-color: #fff;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upload-area .upload-url-area, .text-upload-area {
+    width: 100%;
+}
+
+.upload-area .upload-url-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.upload-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.upload-label:hover {
+    background-color: var(--accent-light);
+    transform: translateY(-2px);
+}
+
+#file-upload {
+    display: none;
+}
+
+.upload-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--text-secondary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.text-upload-area h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.upload-url-area input,
+.text-upload-area input[type="text"],
+.text-upload-area textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.text-upload-area textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.upload-url-area button,
+.text-upload-area button {
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+.upload-url-area button:hover:not(:disabled),
+.text-upload-area button:hover:not(:disabled) {
+    background-color: var(--accent-light);
+}
+
+.upload-url-area button:disabled,
+.text-upload-area button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* ================================== */
+/* 文件内容显示弹窗 */
+/* ================================== */
+.file-content-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.file-content-modal {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.content-body {
+    white-space: pre-wrap;
+    font-family: 'Inter', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    margin-top: 1rem;
+}
+
+/* ================================== */
+/* 通用变量 */
+/* ================================== */
+:root {
+    --bg-primary: #f0f2f5; /* 外部背景 */
+    --bg-secondary: #ffffff; /* 面板背景 */
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-color: #007bff;
+    --accent-light: #0056b3;
+    --border-color: #e0e0e0;
+    --danger-color: #dc3545;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
